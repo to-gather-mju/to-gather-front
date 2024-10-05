@@ -18,7 +18,7 @@ const Title = () => {
 
   const handleNext = () => {
     if (inputValue.length > 0) {
-      navigate("/Calendar");
+      navigate("/calendar");
     }
   };
 
@@ -37,7 +37,7 @@ const Title = () => {
         <BtnBox>
           <SmallBtn
             color="#ccc"
-            activeColor="#FF4444"
+            activeColor={(props) => props.theme.colors.red}
             isActive={false}
             onClick={handlePrevious}
           >
