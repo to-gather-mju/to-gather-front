@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import BigBtn from "../components/BigBtn";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Axios } from "../api/Axios";
 
 const Name = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { meetingId } = location.state || {};
 
   const handleNextPage = () => {
     if (name.trim() === "") {
       setError(true);
     } else {
       setError(false);
-      navigate("/timetable");
+
+      Axios.post(`/api/user/create/${meetingId}`, {
+        userName: name,
+      })
+        .then((response) => {
+          console.log("User created successfully:", response.data);
+          navigate("/timetable", { state: { meetingId } });
+        })
+        .catch((error) => {
+          console.error("Error creating user:", error);
+        });
     }
   };
-
   const handleChange = (e) => {
     setName(e.target.value);
     if (e.target.value.trim() !== "") {
