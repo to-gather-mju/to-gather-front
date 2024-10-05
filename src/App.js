@@ -16,14 +16,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/main" element={<Home />} />
-        <Route path="/Calendar" element={<Calendar />} />
-        <Route path="/Complete" element={<Complete />} />
-        <Route path="/Location" element={<Location />} />
-        <Route path="/Result" element={<Result />} />
-        <Route path="/TimeTable" element={<TimeTable />} />
-        <Route path="/TimeSet" element={<TimeSet />} />
-        <Route path="/Title" element={<Title />} />
-        <Route path="/Time" element={<Vote />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/complete" element={<Complete />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/timeTable" element={<TimeTable />} />
+        <Route path="/timeSet" element={<TimeSet />} />
+        <Route path="/title" element={<Title />} />
+        <Route path="/time" element={<Vote />} />
       </Routes>
     </Layout>
   );
