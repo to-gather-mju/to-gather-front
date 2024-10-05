@@ -4,7 +4,7 @@ import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";
 import styled from "styled-components";
 
-const TimeTable = () => {
+const TimeSet = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [locations, setLocations] = useState([""]);
@@ -240,4 +240,4 @@ const BtnBox = styled.div`
   justify-content: space-around;
 `;
 
-export default TimeTable;
+export default TimeSet;
