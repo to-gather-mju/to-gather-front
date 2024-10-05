@@ -7,10 +7,10 @@ import Bar from "../components/Bar";
 const Result = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { title } = location.state || {};
+  const { title, meetingId } = location.state || {};
 
   const handleNextPage = () => {
-    navigate("/name");
+    navigate("/name", { state: { meetingId } });
   };
   const handleCopyClipBoard = async (text) => {
     try {
@@ -29,10 +29,10 @@ const Result = () => {
       <Description>모임원들에게 링크를 꼭 공유해주세요!</Description>
       <LinkCopy
         onClick={() =>
-          handleCopyClipBoard(`${window.location.origin}${location.pathname}`)
+          handleCopyClipBoard(`${window.location.origin}/result/${meetingId}`)
         }
       >
-        {`${window.location.origin}${location.pathname}`}
+        {`${window.location.origin}/final/${meetingId}`}
       </LinkCopy>
       <BottomBox>
         <Bar />
