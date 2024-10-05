@@ -51,7 +51,7 @@ const TimeTable = () => {
 
   const handleNext = () => {
     if (selectedBlocks.length > 0) {
-      navigate("/result", { state: { name, title } });
+      navigate("/name", { state: { name, title } });
     }
   };
 
@@ -141,7 +141,7 @@ const TimeTable = () => {
             isActive={selectedBlocks.length > 0}
             onClick={handleNext}
           >
-            완료
+            다음
           </SmallBtn>
         </BtnBox>
       </BottomBox>
