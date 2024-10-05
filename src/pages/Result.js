@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import BigBtn from "../components/BigBtn";
 import { useNavigate, useLocation } from "react-router-dom";
+import Bar from "../components/Bar";
 
 const Result = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { title } = location.state || {};
+  const { title, meetingId } = location.state || {};
 
   const handleNextPage = () => {
-    navigate("/name");
+    navigate("/name", { state: { meetingId } });
   };
   const handleCopyClipBoard = async (text) => {
     try {
@@ -28,23 +29,27 @@ const Result = () => {
       <Description>모임원들에게 링크를 꼭 공유해주세요!</Description>
       <LinkCopy
         onClick={() =>
-          handleCopyClipBoard(`${window.location.origin}${location.pathname}`)
+          handleCopyClipBoard(`${window.location.origin}/result/${meetingId}`)
         }
       >
-        {`${window.location.origin}${location.pathname}`}
+        {`${window.location.origin}/final/${meetingId}`}
       </LinkCopy>
       <BottomBox>
-        <BigBtn color="#EA6868" onClick={handleNextPage}>
-          투표하기
-        </BigBtn>
+        <Bar />
+        <BtnBox>
+          <BigBtn color="#EA6868" onClick={handleNextPage}>
+            투표하기
+          </BigBtn>
+        </BtnBox>
       </BottomBox>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
-  height: 80%;
+  width: 90%;
+  height: 100%;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,8 +112,13 @@ const BottomBox = styled.div`
   margin-top: auto;
   margin-bottom: 30px;
   width: 100%;
-  position: fixed;
-  bottom: 1rem;
+`;
+
+const BtnBox = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 export default Result;

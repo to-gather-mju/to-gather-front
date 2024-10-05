@@ -3,14 +3,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";
 import styled from "styled-components";
+import { Axios } from "../api/Axios";
 
-const TimeTable = () => {
+const TimeSet = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [locations, setLocations] = useState([""]);
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, title } = location.state || {};
+  const { title, startDate, endDate } = location.state || {};
 
   const times = [
     "00:00",
@@ -44,8 +45,25 @@ const TimeTable = () => {
   };
 
   const handleNext = () => {
-    if (startTime && endTime && locations.every((location) => location)) {
-      navigate("/result", { state: { name, title } });
+    if (startTime && endTime && locations.every((loc) => loc)) {
+      const meetingData = {
+        meetingTitle: title,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        startTime,
+        endTime,
+        places: locations,
+      };
+
+      Axios.post("/api/meeting/createMeeting", meetingData)
+        .then((response) => {
+          const meetingId = response.data.data.meetingId;
+          console.log("Meeting Created:", response.data);
+          navigate("/result", { state: { meetingId } });
+        })
+        .catch((error) => {
+          console.error("Error creating meeting:", error);
+        });
     }
   };
 
@@ -240,4 +258,4 @@ const BtnBox = styled.div`
   justify-content: space-around;
 `;
 
-export default TimeTable;
+export default TimeSet;

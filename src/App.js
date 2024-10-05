@@ -27,7 +27,7 @@ function App() {
         <Route path="/timeSet" element={<TimeSet />} />
         <Route path="/title" element={<Title />} />
         <Route path="/time" element={<Vote />} />
-        <Route path="/final" element={<Final />} />
+        <Route path="/final/:meetingId" element={<Final />} />
       </Routes>
     </Layout>
   );

@@ -18,7 +18,14 @@ const Calendar = () => {
 
   const handleNext = () => {
     if (startDate && endDate) {
-      navigate("/timeset", { state: { name, title } });
+      navigate("/timeset", {
+        state: {
+          name,
+          title,
+          startDate,
+          endDate,
+        },
+      });
     }
   };
 
