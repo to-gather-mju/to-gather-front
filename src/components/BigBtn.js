@@ -18,6 +18,9 @@ const BigBtn = ({ children, color, activeColor, isActive, onClick }) => {
 
 const Container = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Btn = styled.button`
