@@ -35,6 +35,7 @@ const Home = () => {
         <BigBtn
           color = '#D9D9D9'
           activeColor = '#EA6868'
+          isActive={name.trim() !== ''}
           onClick={handleNextPage}
         >
           <BtnText>다음</BtnText>
@@ -62,7 +63,7 @@ const Logo = styled.div`
 `;
 
 const Description = styled.div`
-  color: ${(props) => (props.error ? 'red' : '#000')};
+  color: ${(props) => (props.error ? '#EA6868' : '#000')};
   font-family: Inter;
   font-size: 1.3rem;
   font-style: normal;
@@ -77,6 +78,8 @@ const Name = styled.input`
   height: 3.5rem;
   margin-top: 1.62rem;
   margin-bottom: 15rem;
+  outline: none;
+  font-size: large;
 `;
 
 const BtnText = styled.span`
