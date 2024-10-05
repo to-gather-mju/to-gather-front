@@ -9,6 +9,7 @@ import Title from "./pages/Title";
 import Vote from "./pages/Vote";
 import Layout from "./components/Layout";
 import TimeSet from "./pages/TimeSet";
+import Name from "./pages/Name";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/main" element={<Home />} />
+        <Route path="/name" element={<Name />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/complete" element={<Complete />} />
         <Route path="/location" element={<Location />} />

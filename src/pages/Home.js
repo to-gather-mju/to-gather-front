@@ -1,43 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import BigBtn from "../components/BigBtn";
+
 import { useNavigate } from "react-router-dom";
+import SmallBtn from "../components/SmallBtn";
 
 const Home = () => {
-  const [name, setName] = useState("");
-  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const handleNextPage = () => {
-    if (name.trim() === "") {
-      setError(true);
-    } else {
-      setError(false);
-      navigate("/title", { state: { name: name } });
-    }
-  };
-
-  const handleChange = (e) => {
-    setName(e.target.value);
-    if (e.target.value.trim() !== "") {
-      setError(false);
-    }
+    navigate("/title");
   };
 
   return (
     <Container>
       <Logo>투게더</Logo>
-      <Description error={error}>이름을 입력해주세요.</Description>
-      <Name value={name} onChange={handleChange}></Name>
+      <p>투게더를 시작해보세요.</p>
       <BottomBox>
-        <BigBtn
-          color="#D9D9D9"
-          activeColor="#EA6868"
-          isActive={name.trim() !== ""}
-          onClick={handleNextPage}
-        >
-          다음
-        </BigBtn>
+        <SmallBtn color="#EA6868" onClick={handleNextPage}>
+          시작하기
+        </SmallBtn>
       </BottomBox>
     </Container>
   );
@@ -61,32 +42,11 @@ const Logo = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Description = styled.div`
-  color: ${(props) => (props.error ? "#EA6868" : "#000")};
-  font-family: Inter;
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-
-const Name = styled.input`
-  border: 2px solid ${(props) => props.theme.colors.red};
-  border-radius: 15px;
-  width: 70%;
-  height: 40px;
-  margin-top: 1.62rem;
-  margin-bottom: 15rem;
-  outline: none;
-  font-size: large;
-`;
-
 const BottomBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: auto;
   margin-bottom: 30px;
-  width: 100%;
+  margin: auto;
 `;
 
 export default Home;
