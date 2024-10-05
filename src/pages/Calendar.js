@@ -16,7 +16,7 @@ const Calendar = () => {
 
   const handleNext = () => {
     if (startDate && endDate) {
-      navigate("/settime");
+      navigate("/timeset");
     }
   };
 
@@ -259,7 +259,7 @@ const Day = styled.div`
       : "transparent"};
   color: ${(props) => (props.isSelected || props.isInRange ? "#fff" : "#000")};
   &:hover {
-    background-color: #f0f0f0;
+    background-color: red;
   }
 `;
 
