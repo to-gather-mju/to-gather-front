@@ -13,7 +13,7 @@ const Home = () => {
       setError(true);
     } else {
       setError(false);
-      navigate("/title");
+      navigate("/title", { state: { name: name } });
     }
   };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";
 import styled from "styled-components";
@@ -9,6 +9,8 @@ const Calendar = () => {
   const [endDate, setEndDate] = useState(null);
   const [currentDate, setCurrentDate] = useState(new Date());
   const navigate = useNavigate();
+  const location = useLocation();
+  const { name, title } = location.state || {};
 
   const handlePrevious = () => {
     navigate(-1);
@@ -16,7 +18,7 @@ const Calendar = () => {
 
   const handleNext = () => {
     if (startDate && endDate) {
-      navigate("/timeset");
+      navigate("/timeset", { state: { name, title } });
     }
   };
 

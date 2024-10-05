@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";
 import styled from "styled-components";
@@ -9,6 +9,8 @@ const TimeTable = () => {
   const [endTime, setEndTime] = useState("");
   const [locations, setLocations] = useState([""]); // For multiple locations
   const navigate = useNavigate();
+  const location = useLocation();
+  const { name, title } = location.state || {};
 
   const times = [
     "00:00",
@@ -43,7 +45,7 @@ const TimeTable = () => {
 
   const handleNext = () => {
     if (startTime && endTime && locations.every((location) => location)) {
-      navigate("/timetable");
+      navigate("/timetable", { state: { name, title } });
     }
   };
 
