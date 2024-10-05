@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 추가
+import { useLocation, useNavigate } from "react-router-dom"; // useNavigate 추가
 import styled from "styled-components";
 import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";
@@ -7,6 +7,8 @@ import SmallBtn from "../components/SmallBtn";
 const Title = () => {
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const { name } = location.state || {};
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -18,7 +20,7 @@ const Title = () => {
 
   const handleNext = () => {
     if (inputValue.length > 0) {
-      navigate("/calendar");
+      navigate("/calendar", { state: { name, title: inputValue } });
     }
   };
 

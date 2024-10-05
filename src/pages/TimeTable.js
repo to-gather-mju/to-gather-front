@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import SmallBtn from "../components/SmallBtn";
 import Bar from "../components/Bar";
@@ -10,6 +10,8 @@ const TimeTable = () => {
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
   const [dragAction, setDragAction] = useState(null);
+  const location = useLocation();
+  const { name, title } = location.state || {};
 
   const timeSlots = [
     "12:00",
@@ -49,7 +51,7 @@ const TimeTable = () => {
 
   const handleNext = () => {
     if (selectedBlocks.length > 0) {
-      navigate("/result");
+      navigate("/result", { state: { name, title } });
     }
   };
 
