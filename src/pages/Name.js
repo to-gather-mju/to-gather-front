@@ -13,7 +13,7 @@ const Name = () => {
       setError(true);
     } else {
       setError(false);
-      navigate("/result");
+      navigate("/timetable");
     }
   };
 
