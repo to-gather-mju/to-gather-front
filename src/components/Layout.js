@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./Header";
-import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
@@ -10,9 +9,6 @@ const Layout = ({ children }) => {
         <Header />
       </HeaderWrapper>
       <Main>{children}</Main>
-      <FooterBox>
-        <Footer />
-      </FooterBox>
     </LayoutContainer>
   );
 };
@@ -20,7 +16,7 @@ const Layout = ({ children }) => {
 const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 `;
 
 const HeaderWrapper = styled.div`
@@ -29,10 +25,6 @@ const HeaderWrapper = styled.div`
 
 const Main = styled.main`
   flex: 1;
-`;
-
-const FooterBox = styled.div`
-  margin-top: 5vh;
 `;
 
 export default Layout;
