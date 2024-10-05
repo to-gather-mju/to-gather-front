@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BigBtn from "../components/BigBtn";
 import { useNavigate, useLocation } from "react-router-dom";
+import Bar from "../components/Bar";
 
 const Result = () => {
   const navigate = useNavigate();
@@ -34,17 +35,21 @@ const Result = () => {
         {`${window.location.origin}${location.pathname}`}
       </LinkCopy>
       <BottomBox>
-        <BigBtn color="#EA6868" onClick={handleNextPage}>
-          투표하기
-        </BigBtn>
+        <Bar />
+        <BtnBox>
+          <BigBtn color="#EA6868" onClick={handleNextPage}>
+            투표하기
+          </BigBtn>
+        </BtnBox>
       </BottomBox>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
-  height: 80%;
+  width: 90%;
+  height: 100%;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,8 +112,13 @@ const BottomBox = styled.div`
   margin-top: auto;
   margin-bottom: 30px;
   width: 100%;
-  position: fixed;
-  bottom: 1rem;
+`;
+
+const BtnBox = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 export default Result;
