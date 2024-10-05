@@ -13,7 +13,7 @@ export const Theme = {
     `,
     title: css`
       font-family: "Pretendard", sans-serif;
-      font-size: 35px;
+      font-size: 28px;
       font-weight: 600;
     `,
     other: css`
