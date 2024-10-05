@@ -7,7 +7,7 @@ import styled from "styled-components";
 const TimeTable = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [locations, setLocations] = useState([""]); // For multiple locations
+  const [locations, setLocations] = useState([""]);
   const navigate = useNavigate();
   const location = useLocation();
   const { name, title } = location.state || {};
@@ -45,7 +45,7 @@ const TimeTable = () => {
 
   const handleNext = () => {
     if (startTime && endTime && locations.every((location) => location)) {
-      navigate("/timetable", { state: { name, title } });
+      navigate("/result", { state: { name, title } });
     }
   };
 

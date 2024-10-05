@@ -4,47 +4,42 @@ import BigBtn from "../components/BigBtn";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Result = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { name, title } = location.state || {};
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { title } = location.state || {};
 
-    const handleNextPage = () => {
-        navigate('/time');
-    };
-    const handleCopyClipBoard = async (text: string) => {
-        try {
-            await navigator.clipboard.writeText(text);
-            alert("클립보드에 링크가 복사되었어요.");
-        } catch (err) {
-            console.log(err);
-        }
-    };
-    
-    return (
+  const handleNextPage = () => {
+    navigate("/name");
+  };
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("클립보드에 링크가 복사되었어요.");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
     <Container>
-        <Logo>투게더</Logo>
-        <div>
-            <AlarmBold>{name}</AlarmBold>
-            <Alarm>님</Alarm>
-        </div>
-        <AlarmBold>{title}</AlarmBold>
-        <Alarm>투표를 만들었어요.</Alarm>
-        <Description>모임원들에게 링크를 꼭 공유해주세요!</Description>
-        <LinkCopy
-            onClick={() => handleCopyClipBoard(`${window.location.origin}${location.pathname}`)}
-        >
-            {`${window.location.origin}${location.pathname}`}
-        </LinkCopy>
-        <BottomBox>
-            <BigBtn
-            color = '#EA6868'
-            onClick={handleNextPage}
-            >
-            투표하기
-            </BigBtn>
-        </BottomBox>
+      <Logo>투게더</Logo>
+      <AlarmBold>{title}</AlarmBold>
+      <Alarm>투표를 만들었어요.</Alarm>
+      <Description>모임원들에게 링크를 꼭 공유해주세요!</Description>
+      <LinkCopy
+        onClick={() =>
+          handleCopyClipBoard(`${window.location.origin}${location.pathname}`)
+        }
+      >
+        {`${window.location.origin}${location.pathname}`}
+      </LinkCopy>
+      <BottomBox>
+        <BigBtn color="#EA6868" onClick={handleNextPage}>
+          투표하기
+        </BigBtn>
+      </BottomBox>
     </Container>
-    );
+  );
 };
 
 const Container = styled.div`
@@ -66,44 +61,44 @@ const Logo = styled.div`
 `;
 
 const AlarmBold = styled.span`
-    color: #000;
-    text-align: center;
-    font-family: Inter;
-    font-size: 1.875rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 const Alarm = styled.span`
-    color: #000;
-    font-family: Inter;
-    font-size: 1.875rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: #000;
+  font-family: Inter;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 const Description = styled.div`
-    color: #6B6B6B;
-    text-align: center;
-    font-family: Inter;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 7rem;
-    margin-bottom: 1.06rem;
+  color: #6b6b6b;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 7rem;
+  margin-bottom: 1.06rem;
 `;
 
 const LinkCopy = styled.div`
-    color: #F18383;
-    text-align: center;
-    font-family: Inter;
-    font-size: 0.9375rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: #f18383;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 const BottomBox = styled.div`

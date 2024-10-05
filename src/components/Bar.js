@@ -9,7 +9,7 @@ const Bar = () => {
     if (pathname === "/title") return 1;
     if (pathname === "/calendar") return 2;
     if (pathname === "/timeset") return 3;
-    if (pathname === "/timetable") return 4;
+    if (pathname === "/result") return 4;
     return 0;
   };
 

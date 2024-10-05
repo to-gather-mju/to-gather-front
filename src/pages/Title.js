@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // useNavigate 추가
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";

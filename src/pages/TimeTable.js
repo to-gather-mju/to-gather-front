@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import SmallBtn from "../components/SmallBtn";
 import Bar from "../components/Bar";
+import BigBtn from "../components/BigBtn";
 
 const TimeTable = () => {
   const [selectedBlocks, setSelectedBlocks] = useState([]);
@@ -45,13 +45,9 @@ const TimeTable = () => {
     };
   }, []);
 
-  const handlePrevious = () => {
-    navigate(-1);
-  };
-
   const handleNext = () => {
     if (selectedBlocks.length > 0) {
-      navigate("/name", { state: { name, title } });
+      navigate("/final", { state: { name, title } });
     }
   };
 
@@ -132,17 +128,14 @@ const TimeTable = () => {
       <BottomBox>
         <Bar />
         <BtnBox>
-          <SmallBtn color="#ccc" onClick={handlePrevious}>
-            이전
-          </SmallBtn>
-          <SmallBtn
+          <BigBtn
             color="#ccc"
             activeColor={(props) => props.theme.colors.red}
             isActive={selectedBlocks.length > 0}
             onClick={handleNext}
           >
-            다음
-          </SmallBtn>
+            결과보기
+          </BigBtn>
         </BtnBox>
       </BottomBox>
     </Container>
