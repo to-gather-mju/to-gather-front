@@ -1,7 +1,7 @@
 import React from "react";
 
-const Time = () => {
+const TimeTable = () => {
   return <div></div>;
 };
 
-export default Time;
+export default TimeTable;
