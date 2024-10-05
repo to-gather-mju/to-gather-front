@@ -16,12 +16,10 @@ const SmallBtn = ({ children, color, activeColor, isActive, onClick }) => {
   );
 };
 
-const Container = styled.div`
-  width: 100%;
-`;
+const Container = styled.div``;
 
 const Btn = styled.button`
-  width: 45%;
+  width: 40vw;
   height: 40px;
   border-radius: 15px;
   font-size: 20px;
