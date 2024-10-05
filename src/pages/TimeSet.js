@@ -57,7 +57,7 @@ const TimeSet = () => {
 
       Axios.post("/api/meeting/createMeeting", meetingData)
         .then((response) => {
-          const meetingId = response.data.meetingId;
+          const meetingId = response.data.data.meetingId;
           console.log("Meeting Created:", response.data);
           navigate("/result", { state: { meetingId } });
         })
