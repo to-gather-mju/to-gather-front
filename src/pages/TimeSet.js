@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import Bar from "../components/Bar";
 import SmallBtn from "../components/SmallBtn";
+import styled from "styled-components";
 
-const TimeSet = () => {
+const TimeTable = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [locations, setLocations] = useState([""]); // For multiple locations
   const navigate = useNavigate();
 
   const times = [
@@ -41,15 +42,30 @@ const TimeSet = () => {
   };
 
   const handleNext = () => {
-    if (startTime && endTime) {
+    if (startTime && endTime && locations.every((location) => location)) {
       navigate("/timetable");
     }
+  };
+
+  const handleLocationChange = (index, value) => {
+    const newLocations = [...locations];
+    newLocations[index] = value;
+    setLocations(newLocations);
+  };
+
+  const addLocation = () => {
+    setLocations([...locations, ""]);
+  };
+
+  const removeLocation = (index) => {
+    const newLocations = locations.filter((_, locIndex) => locIndex !== index);
+    setLocations(newLocations);
   };
 
   return (
     <Container>
       <TopBox>
-        <Title>투표 시간</Title>
+        <Title>모임 시간</Title>
         <Text>투표가 필요한 시간을 선택해주세요.</Text>
         <TimeSelectContainer>
           <TimeSelect
@@ -63,7 +79,7 @@ const TimeSet = () => {
               </option>
             ))}
           </TimeSelect>
-          <Separator>부터=</Separator>
+          <Separator>부터</Separator>
           <TimeSelect
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
@@ -77,7 +93,28 @@ const TimeSet = () => {
           </TimeSelect>
           <Separator>까지</Separator>
         </TimeSelectContainer>
+
+        <Title>모임 장소</Title>
+        <Text>모임 장소 투표 후보를 입력해주세요.</Text>
+
+        {locations.map((location, index) => (
+          <LocationInputBox key={index}>
+            <LocationInput
+              type="text"
+              value={location}
+              onChange={(e) => handleLocationChange(index, e.target.value)}
+              placeholder={`장소 ${index + 1}`}
+            />
+            {locations.length > 1 && (
+              <RemoveBtn onClick={() => removeLocation(index)}>X</RemoveBtn>
+            )}
+          </LocationInputBox>
+        ))}
+        <AddBtnBox>
+          <AddLocationBtn onClick={addLocation}>+ 장소 추가</AddLocationBtn>
+        </AddBtnBox>
       </TopBox>
+
       <BottomBox>
         <Bar />
         <BtnBox>
@@ -92,7 +129,7 @@ const TimeSet = () => {
           <SmallBtn
             color="#ccc"
             activeColor={(props) => props.theme.colors.red}
-            isActive={!!startTime && !!endTime}
+            isActive={!!startTime && !!endTime && locations.every((loc) => loc)}
             onClick={handleNext}
           >
             다음
@@ -127,6 +164,7 @@ const TimeSelectContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 60px;
 `;
 
 const TimeSelect = styled.select`
@@ -146,6 +184,45 @@ const Separator = styled.div`
   color: #666;
 `;
 
+const LocationInputBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const LocationInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px ${(props) => props.theme.colors.red};
+  outline: none;
+`;
+
+const RemoveBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  color: ${(props) => props.theme.colors.red};
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+`;
+
+const AddLocationBtn = styled.button`
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: ${(props) => props.theme.colors.red};
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+`;
+
+const AddBtnBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const BottomBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -161,4 +238,4 @@ const BtnBox = styled.div`
   justify-content: space-around;
 `;
 
-export default TimeSet;
+export default TimeTable;
