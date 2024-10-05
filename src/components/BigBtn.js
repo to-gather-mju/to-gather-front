@@ -21,13 +21,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 2rem;
 `;
 
 const Btn = styled.button`
-  width: 60%;
-  height: 3rem;
+  width: 90%;
+  height: 40px;
   border-radius: 15px;
   font-size: 20px;
   background-color: ${(props) =>
