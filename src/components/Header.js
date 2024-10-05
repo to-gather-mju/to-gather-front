@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
-      <Logo>투게더</Logo>
+      <Logo onClick={() => navigate("/")}>투게더</Logo>
     </Container>
   );
 };
