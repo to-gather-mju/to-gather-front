@@ -24,8 +24,8 @@ const Container = styled.div`
 `;
 
 const Btn = styled.button`
-  width: 90%;
-  height: 40px;
+  width: 60%;
+  height: 3rem;
   border-radius: 15px;
   font-size: 20px;
   background-color: ${(props) =>

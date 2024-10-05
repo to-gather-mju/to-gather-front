@@ -74,16 +74,17 @@ const Name = styled.input`
   border: 4px solid ${(props) => props.theme.colors.red};
   border-radius: 15px;
   width: 50%;
-  height: 3rem;
+  height: 3.5rem;
   margin-top: 1.62rem;
+  margin-bottom: 15rem;
 `;
 
 const BtnText = styled.span`
   color: #000;
   font-family: Inter;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   opacity: 0.5;
 `;
