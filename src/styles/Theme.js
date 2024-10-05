@@ -4,7 +4,7 @@ import "./font.css";
 export const Theme = {
   fonts: {
     logo: css`
-      font-family: "HakgyoansimPuzzleTTF", sans-serif;
+      font-family: "HakgyoansimPuzzleTTF-Black", sans-serif;
       font-size: 30px;
     `,
     default: css`
@@ -27,6 +27,7 @@ export const Theme = {
     gray: "#9A9A9A",
     gray2: "#c4c4c4",
     gray3: "#E9E9E9",
+    red: "#EA6868",
   },
   breakpoints: {},
 };
