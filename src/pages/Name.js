@@ -56,7 +56,8 @@ const Name = () => {
 };
 
 const Container = styled.div`
-  width: 100%;
+  margin: auto;
+  width: 90%;
   height: 100%;
   display: flex;
   justify-content: center;
